@@ -9,6 +9,7 @@ phases:
             - REPOSITORY_URI=755064992656.dkr.ecr.us-east-1.amazonaws.com/write
             - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
             - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
+            - aws ecs register-task-definition --cli-input-json file://taskdef.json
     build:
         commands:
             - echo Build started on `date`

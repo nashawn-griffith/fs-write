@@ -1,0 +1,51 @@
+{
+	"family": "fs-write",
+	"executionRoleArn": "arn:aws:iam::755064992656:role/ecsTaskExecutionRole",
+	"networkMode": "awsvpc",
+	"containerDefinitions": [
+		{
+			"name": "fs-write-container",
+			"image": "755064992656.dkr.ecr.us-east-1.amazonaws.com/write:latest",
+
+			"portMappings": [
+				{
+					"hostPort": 5000,
+					"protocol": "tcp",
+					"containerPort": 5000
+				}
+			],
+			"mountPoints": [
+				{
+					"sourceVolume": "bind",
+					"containerPath": "/tmp",
+					"readOnly": false
+				}
+			],
+			"essential": true
+		},
+
+		{
+			"name": "fs-read-container",
+			"image": "755064992656.dkr.ecr.us-east-1.amazonaws.com/read:latest",
+
+			"portMappings": [
+				{
+					"hostPort": 5001,
+					"protocol": "tcp",
+					"containerPort": 5001
+				}
+			],
+			"mountPoints": [
+				{
+					"sourceVolume": "bind",
+					"containerPath": "/tmp",
+					"readOnly": false
+				}
+			],
+			"essential": true
+		}
+	],
+	"cpu": "256",
+	"memory": "512",
+	"requiresCompatibilities": ["FARGATE"]
+}
