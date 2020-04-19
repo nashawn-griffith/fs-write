@@ -1,7 +1,7 @@
 {
 	"family": "fs-write",
 	"executionRoleArn": "arn:aws:iam::755064992656:role/ecsTaskExecutionRole",
-	"networkMode": "awsvpc",
+	"networkMode": "Bridge",
 	"containerDefinitions": [
 		{
 			"name": "fs-write-container",
@@ -47,5 +47,5 @@
 	],
 	"cpu": "256",
 	"memory": "512",
-	"requiresCompatibilities": ["FARGATE"]
+	"requiresCompatibilities": ["EC2"]
 }
