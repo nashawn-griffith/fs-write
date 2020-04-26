@@ -6,6 +6,14 @@
 		{
 			"name": "fs-write-container",
 			"image": "<IMAGE1_NAME>",
+			"logConfiguration": {
+				"logDriver": "awslogs",
+				"options": {
+					"awslogs-group": "/ecs/fs-td",
+					"awslogs-region": "us-east-1",
+					"awslogs-stream-prefix": "ecs"
+				}
+			},
 
 			"portMappings": [
 				{
@@ -14,7 +22,14 @@
 					"containerPort": 5000
 				}
 			],
-			"essential": true
+			"essential": true,
+			"mountPoints": [
+				{
+					"sourceVolume": "bind",
+					"containerPath": "/tmp",
+					"readOnly": false
+				}
+			]
 		},
 
 		{
@@ -36,7 +51,28 @@
 					"containerPort": 5001
 				}
 			],
-			"essential": true
+			"essential": true,
+			"mountPoints": [
+				{
+					"sourceVolume": "bind",
+					"containerPath": "/tmp",
+					"readOnly": false
+				}
+			]
+		}
+	],
+
+	"volumes": [
+		{
+			"name": "bind",
+			"efsVolumeConfiguration": {
+				"fileSystemId": "fs-63e4fbe3",
+				"rootDirectory": "/tmp",
+				"transitEncryption": "ENABLED",
+				"authorizationConfig": {
+					"accessPointId": "fsap-0c97cb638a02ac784"
+				}
+			}
 		}
 	],
 	"cpu": "256",
