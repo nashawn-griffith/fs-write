@@ -1,11 +1,11 @@
 {
-	"family": "fs-write",
+	"family": "fs-td",
 	"executionRoleArn": "arn:aws:iam::755064992656:role/ecsTaskExecutionRole",
-	"networkMode": "Bridge",
+	"networkMode": "awsvpc",
 	"containerDefinitions": [
 		{
 			"name": "fs-write-container",
-			"image": "755064992656.dkr.ecr.us-east-1.amazonaws.com/write:latest",
+			"image": "<IMAGE1_NAME>",
 
 			"portMappings": [
 				{
@@ -14,19 +14,12 @@
 					"containerPort": 5000
 				}
 			],
-			"mountPoints": [
-				{
-					"sourceVolume": "bind",
-					"containerPath": "/tmp",
-					"readOnly": false
-				}
-			],
 			"essential": true
 		},
 
 		{
 			"name": "fs-read-container",
-			"image": "755064992656.dkr.ecr.us-east-1.amazonaws.com/read:latest",
+			"image": "<IMAGE2_NAME>",
 
 			"portMappings": [
 				{
@@ -35,17 +28,10 @@
 					"containerPort": 5001
 				}
 			],
-			"mountPoints": [
-				{
-					"sourceVolume": "bind",
-					"containerPath": "/tmp",
-					"readOnly": false
-				}
-			],
 			"essential": true
 		}
 	],
 	"cpu": "256",
 	"memory": "512",
-	"requiresCompatibilities": ["EC2"]
+	"requiresCompatibilities": ["FARGATE"]
 }
