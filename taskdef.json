@@ -67,7 +67,6 @@
 			"name": "bind",
 			"efsVolumeConfiguration": {
 				"fileSystemId": "fs-63e4fbe3",
-				"rootDirectory": "/tmp",
 				"transitEncryption": "ENABLED",
 				"authorizationConfig": {
 					"accessPointId": "fsap-0c97cb638a02ac784"
