@@ -6,6 +6,14 @@
 		{
 			"name": "fs-write-container",
 			"image": "<IMAGE1_NAME>",
+			"logConfiguration": {
+				"logDriver": "awslogs",
+				"options": {
+					"awslogs-group": "/ecs/fs-td",
+					"awslogs-region": "us-east-1",
+					"awslogs-stream-prefix": "ecs"
+				}
+			},
 
 			"portMappings": [
 				{
