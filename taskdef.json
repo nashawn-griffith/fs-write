@@ -4,10 +4,28 @@
 	"networkMode": "awsvpc",
 	"containerDefinitions": [
 		{
+			"essential": true,
+			"image": "906394416424.dkr.ecr.us-east-1.amazonaws.com/aws-for-fluent-bit:latest",
+			"name": "log_router",
+			"firelensConfiguration": {
+				"type": "fluentbit"
+			},
+			"logConfiguration": {
+				"logDriver": "awslogs",
+				"options": {
+					"awslogs-group": "firelens-container",
+					"awslogs-region": "us-east-1",
+					"awslogs-create-group": "true",
+					"awslogs-stream-prefix": "firelens"
+				}
+			},
+			"memoryReservation": 50
+		},
+		{
 			"name": "container-1",
 			"image": "<IMAGE1_NAME>",
 			"logConfiguration": {
-				"logDriver": "awsfirelen",
+				"logDriver": "awsfirelens",
 
 				"options": {
 					"Name": "cloudwatch",
@@ -26,24 +44,6 @@
 				}
 			],
 			"essential": true
-		},
-		{
-			"essential": true,
-			"image": "906394416424.dkr.ecr.us-east-1.amazonaws.com/aws-for-fluent-bit:latest",
-			"name": "log_router",
-			"firelensConfiguration": {
-				"type": "fluentbit"
-			},
-			"logConfiguration": {
-				"logDriver": "awslogs",
-				"options": {
-					"awslogs-group": "firelens-container",
-					"awslogs-region": "us-west-2",
-					"awslogs-create-group": "true",
-					"awslogs-stream-prefix": "firelens"
-				}
-			},
-			"memoryReservation": 50
 		}
 	],
 
