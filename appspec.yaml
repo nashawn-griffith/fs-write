@@ -5,6 +5,6 @@ Resources:
           Properties:
               TaskDefinition: <TASK_DEFINITION>
               LoadBalancerInfo:
-                  ContainerName: 'fs-write-container'
+                  ContainerName: 'container-1'
                   ContainerPort: 5000
               PlatformVersion: '1.4.0'

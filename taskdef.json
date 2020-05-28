@@ -4,7 +4,7 @@
 	"networkMode": "awsvpc",
 	"containerDefinitions": [
 		{
-			"name": "fs-write-container",
+			"name": "container-1",
 			"image": "<IMAGE1_NAME>",
 			"logConfiguration": {
 				"logDriver": "awslogs",
@@ -22,58 +22,10 @@
 					"containerPort": 5000
 				}
 			],
-			"essential": true,
-			"mountPoints": [
-				{
-					"sourceVolume": "bind",
-					"containerPath": "/tmp",
-					"readOnly": false
-				}
-			]
-		},
-
-		{
-			"name": "fs-read-container",
-			"image": "<IMAGE2_NAME>",
-			"logConfiguration": {
-				"logDriver": "awslogs",
-				"options": {
-					"awslogs-group": "/ecs/fs-td",
-					"awslogs-region": "us-east-1",
-					"awslogs-stream-prefix": "ecs"
-				}
-			},
-
-			"portMappings": [
-				{
-					"hostPort": 5001,
-					"protocol": "tcp",
-					"containerPort": 5001
-				}
-			],
-			"essential": true,
-			"mountPoints": [
-				{
-					"sourceVolume": "bind",
-					"containerPath": "/tmp",
-					"readOnly": false
-				}
-			]
+			"essential": true
 		}
 	],
 
-	"volumes": [
-		{
-			"name": "bind",
-			"efsVolumeConfiguration": {
-				"fileSystemId": "fs-63e4fbe3",
-				"transitEncryption": "ENABLED",
-				"authorizationConfig": {
-					"accessPointId": "fsap-0c97cb638a02ac784"
-				}
-			}
-		}
-	],
 	"cpu": "256",
 	"memory": "512",
 	"requiresCompatibilities": ["FARGATE"]
