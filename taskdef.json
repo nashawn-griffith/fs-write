@@ -28,6 +28,7 @@
 				"logDriver": "awsfirelens",
 				"options": {
 					"@type": "cloudwatch_logs",
+					"Name": "cloudwatch",
 					"log_group_name": "firelens-testing",
 					"auto_create_stream": "true",
 					"use_tag_as_stream": "true",
