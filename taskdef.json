@@ -26,13 +26,12 @@
 			"image": "<IMAGE1_NAME>",
 			"logConfiguration": {
 				"logDriver": "awsfirelens",
-
 				"options": {
-					"Name": "cloudwatch",
-					"region": "us-east-1",
-					"log_group_name": "firelens-fluent-bit",
-					"auto_create_group": "true",
-					"log_stream_prefix": "from-fluent-bit"
+					"@type": "cloudwatch_logs",
+					"log_group_name": "firelens-testing",
+					"auto_create_stream": "true",
+					"use_tag_as_stream": "true",
+					"region": "us-east-1"
 				}
 			},
 
