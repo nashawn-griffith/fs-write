@@ -14,9 +14,7 @@ app.get('/monitor', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-	console.log('Good', 'News');
-	console.error('Bad', 'news');
-	return res.send('DONE');
+	return res.send('Hello');
 });
 
 // app.get('/write/:text', (req, res) => {
