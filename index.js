@@ -10,7 +10,7 @@ console.error = (...args) => originalConsoleError('ERROR:', args);
 const app = express();
 
 app.get('/monitor', (req, res) => {
-	return res.send('server is OK.');
+	return res.send('server is OK...');
 });
 
 app.get('/', (req, res) => {
