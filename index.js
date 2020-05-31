@@ -14,7 +14,7 @@ app.get('/monitor', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-	return res.send('Hello');
+	return res.send('Hello!!!');
 });
 
 // app.get('/write/:text', (req, res) => {
